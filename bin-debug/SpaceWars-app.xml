@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<application xmlns="http://ns.adobe.com/air/application/2.5">
+
+	<id>com.esdot.SpaceWars</id>
+	<filename>SpaceWars</filename>
+	<name>SpaceWars</name>
+	<versionNumber>0.01.0</versionNumber>
+	
+	<allowBrowserInvocation>true</allowBrowserInvocation>
+	
+	
+	<initialWindow>
+		<!-- Note: In Flash Builder, the SWF reference is set automatically. -->
+		<content>SpaceWars.swf</content>
+		<renderMode>cpu</renderMode>
+	    <visible>true</visible>
+	    <fullScreen>true</fullScreen>
+	    <aspectRatio>landscape</aspectRatio>
+	    <autoOrients>false</autoOrients>
+	    <resizable>true</resizable>
+	</initialWindow>
+
+	
+</application>
