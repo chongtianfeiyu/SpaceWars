@@ -2,8 +2,10 @@ package com.esdot.view
 {
 	import assets.Assets;
 	
+	import com.esdot.sprites.EnemyDagger;
 	import com.esdot.sprites.Ship;
 	import com.esdot.ui.JoyStick;
+	import com.gskinner.motion.GTween;
 	
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -68,16 +70,43 @@ package com.esdot.view
 			}
 		}
 		
+		protected var badList:Array = [];
+		protected var currentSeed:Number = .5;
 		protected function tickGame(event:Event):void {
 			var vo:Object;
+			//Move projectiles and calculate hits
 			for(var i:int = projectiles.length - 1; i >= 0; i--){
 				vo = projectiles[i];
 				vo.child.x += vo.velX*14;
 				vo.child.y += vo.velY*14;
+				
+				for(var j:int = badList.length - 1; j >= 0; j--){
+					if(badList[j].hitTestPoint(vo.child.x, vo.child.y, true)){
+						//Hit!
+						removeChild(badList[j]);
+						badList.splice(j, 1);
+					}
+				}
+				
 				if(vo.child.x < 0 || vo.child.x > stage.stageWidth || vo.child.y < 0 || vo.child.y > stage.stageHeight){
 					projectiles.splice(i, 1);
 					blastPool.push(removeChild(vo.child));
 				}
+			}
+			
+			for(i = badList.length - 1; i >= 0; i--){
+				badList[i].updatePosition();
+			}
+			
+			//Spawn baddies
+			if(Math.random() < currentSeed){
+				
+				var dagger:EnemyDagger = new EnemyDagger(ship);
+				dagger.x = stage.stageWidth * Math.random();
+				dagger.y = stage.stageWidth * Math.random();
+				dagger.init();
+				addChild(dagger);
+				badList.push(dagger);
 			}
 		}
 		

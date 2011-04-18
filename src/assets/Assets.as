@@ -16,5 +16,8 @@ package assets
 		[Embed(source="/assets/assets.swf", symbol="BlastSimpleAssets")]
 		public static var BlastSimpleAssets:Class;
 		
+		[Embed(source="/assets/assets.swf", symbol="EnemyDaggerAssets")]
+		public static var EnemyDaggerAssets:Class;
+		
 	}
 }
