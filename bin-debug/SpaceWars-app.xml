@@ -18,6 +18,7 @@
 	    <aspectRatio>landscape</aspectRatio>
 	    <autoOrients>false</autoOrients>
 	    <resizable>true</resizable>
+	    
 	</initialWindow>
 
 	
